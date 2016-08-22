@@ -1,0 +1,62 @@
+Steps:
+
+1. Login to cloud1.osic.org using your credentials
+
+2. Go to "Access & Security
+    Create Key Pair
+    Give a name
+    The key pair gets downloaded
+    
+3. Go to "Instances"
+
+4. Launch an instance
+    Availability zone: nova
+    Instance name: any name you want
+    Flavor: m1.large
+    Instance count: 1
+    Instance boot source: Boot from image
+    Image name: ubuntu-14.04-cloud (247.9 MB)
+
+5. Access & Security
+    Choose the key pair created
+    Security group: default
+
+6. Networking:
+    Choose "karthik_net"
+    
+7. Launch 
+
+8. Associate an IP address
+    Use the drop down list corresponding to the instance created and select "associate floating IP"
+    
+9. Open a terminal
+    Change the permission on keypair file: chmod 0600 Downloads/keypair.pem
+    After logging in:
+      Step 1: sudo apt-get update
+      Step 2: sudo apt-get install -y git python-pip vim
+      Step 3: git clone https://git.openstack.org/openstack-dev/devstack
+      Step 4: cd devstack/tools  and run "sudo ./create-stack-users.sh"  (to create the stack user)
+      Step 5: "sudo su stack"  and got "cd /opt/stack"
+      Step 6: git clone https://git.openstack.org/openstack-dev/devstack
+      Step 7: cd devstack
+      Step 8: Create: "localo.conf" file with the following content
+        [[local|localrc]]
+        ADMIN_PASSWORD=secrete
+        DATABASE_PASSWORD=$ADMIN_PASSWORD
+        RABBIT_PASSWORD=$ADMIN_PASSWORD
+        SERVICE_PASSWORD=$ADMIN_PASSWORD
+        SERVICE_TOKEN=a682f596-76f3-11e3-b3b2-e716f9080d50
+        GIT_BASE=https://git.openstack.org
+        disable_service n-net
+        enable_service q-svc
+        enable_service q-agt
+        enable_service q-dhcp
+        enable_service q-l3
+        enable_service q-meta
+        enable_service neutron
+        LIBS_FROM_GIT=python-cinderclient,python-glanceclient,python-heatclient,python-keystoneclient,python-neutronclient,python-novaclient,python-swiftclient,python-openstackclient,tempest
+        
+      Step 9: Run: "./stack.sh" 
+    
+    
+Devstack setup complete
