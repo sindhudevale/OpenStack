@@ -1,0 +1,10 @@
+1. Login to the instance
+
+2. cd /opt/stack  and create a new SSH key:  ssh-keygen -t rsa -b 4096 -C "email_address" -f ~/.ssh/gerrit
+
+3. cd ~/.ssh and create "config" file with the following contents:
+    host review.openstack.org
+    HostName review.openstack.org
+    IdentityFile ~/.ssh/gerrit
+    IdentitiesOnly yes
+    
