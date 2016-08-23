@@ -7,4 +7,15 @@
     HostName review.openstack.org
     IdentityFile ~/.ssh/gerrit
     IdentitiesOnly yes
+
+4. Sign in to review.openstack.org
+
+5. Goto setting and setup your username
+
+6. Copy the contents of the public key generated in step 2, navigate to review.openstack.org and paste it in the text region of "SSH Public Keys" and click add.
+
+7. If not done already, sign the contributor license agreement. 
+        Navigate to review.openstack.org
+        Goto Settings->Agreements->New Contributor Agreement->ICLA OpenStack Individual Contributor License Agreement
+        Fill in the required information, submit.
     
