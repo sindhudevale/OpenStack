@@ -1,0 +1,30 @@
+1. Login to your instance
+
+2. sudo apt-get update
+
+3. sudo apt-get install -y git python-pip vim
+
+4. sudo pip install --upgrade git-review
+
+5. git-review --version   (should be 1.25 or greater)
+
+6. git config --global user.name "Firstname Lastname"
+
+7. git config --global user.email youremail@example.com
+
+8. git config --global gitreview.username yourgerritusername
+
+9. git config --global core.editor yourfavoriteeditor
+
+
+Steps while submitting a patch:
+
+1. Create branch from the master, make changes to the required files
+    git checkout -b bug/bug_number
+
+2. Once all the changes are done:
+    a. git add .
+    b. git commit (if commiting for the first time) else "git commit --amend" (if commiting again to the same review)
+    c. git review
+    
+    
